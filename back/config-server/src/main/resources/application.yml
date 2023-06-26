@@ -1,0 +1,15 @@
+server:
+  port: 9100
+
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    compatibility-verifier:
+      enabled: true
+
+    config:
+      server:
+        git:
+          uri: https://github.com/Fuji-vanilli/config-repo-market-ms.git
