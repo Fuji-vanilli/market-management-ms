@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-transparent">
+  <div class="container">
+    <a class="navbar-brand fs-4" href="#">Fuji-Market</a>
+    <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="sidebar offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-center
+          align-items-center fs-6 flex-grow-1 pe-3">
+          <li class="nav-item mx-2">
+            <a [routerLink]="['/dashboard']" class="nav-link active" aria-current="page" >Dashboard</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" routerLink="register">Products</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" routerLink="#">Services</a>  
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" routerLink="list">Contact</a>
+          </li>
+        </ul>
+        <div class="d-flex justify-content-center align-items-center gap-3">  
+          <a class="text-white text-decoration-none" routerLink="/signin">Login</a>
+          <a routerLink="/singup" class="rounded-4 text-white text-decoration-none 
+              px-3 py-1 bg-pink" style="background-color: #f94ca4;">Sing Up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="mt-5">
+  <router-outlet></router-outlet>
+</div>

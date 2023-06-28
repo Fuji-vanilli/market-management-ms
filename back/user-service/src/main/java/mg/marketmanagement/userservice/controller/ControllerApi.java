@@ -5,6 +5,7 @@ import mg.marketmanagement.userservice.Utils.Response;
 import mg.marketmanagement.userservice.dto.UserRequest;
 import mg.marketmanagement.userservice.service.UserService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,7 @@ import static mg.marketmanagement.userservice.Utils.Root.APP_ROOT;
 @RestController
 @RequestMapping(APP_ROOT)
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class ControllerApi implements UserController{
     private final UserService userService;
 

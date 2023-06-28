@@ -7,5 +7,6 @@ import java.util.Optional;
 
 public interface BillRepository extends JpaRepository<Bill, Long> {
     Optional<Bill> findByUuid(String uuid);
+    void deleteByUuid(String uuid);
     boolean existsByEmailUserAndDetailProduct(String emailUser, String detailProduct);
 }

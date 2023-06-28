@@ -5,12 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.util.Map;
+
 @Data
 @AllArgsConstructor @NoArgsConstructor
 @Builder
 public class BillRequest {
     private String methodPayement;
-    private Double total;
     private String detailProduct;
     private String emailUser;
+    private Map<String, Integer> productsCode;
 }

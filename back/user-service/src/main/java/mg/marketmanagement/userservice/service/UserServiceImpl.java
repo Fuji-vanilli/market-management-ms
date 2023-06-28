@@ -127,7 +127,7 @@ public class UserServiceImpl implements UserService{
                 .path("all")
                 .buildAndExpand("api/user/")
                 .toUri();
-
+        userRepository.deleteById(id);
         return generateResponse(
                 HttpStatus.OK,
                 location,

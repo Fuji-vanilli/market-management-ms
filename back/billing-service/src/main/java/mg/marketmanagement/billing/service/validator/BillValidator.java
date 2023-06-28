@@ -13,9 +13,6 @@ public class BillValidator {
         if(Objects.isNull(request.getDetailProduct())){
             errors.add("detail of product required!!!");
         }
-        if(Objects.isNull(request.getTotal())){
-            errors.add("total of product required!!!");
-        }
         if(Objects.isNull(request.getEmailUser())){
             errors.add("email of user required required!!!");
         }

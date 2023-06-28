@@ -9,9 +9,9 @@ public class BillMapperImpl implements BillMapper{
     public Bill mapToBill(BillRequest request) {
         return Bill.builder()
                 .methodPayement(request.getMethodPayement())
-                .total(request.getTotal())
                 .detailProduct(request.getDetailProduct())
                 .emailUser(request.getEmailUser())
+                .productsCode(request.getProductsCode())
                 .build();
     }
 
@@ -25,6 +25,9 @@ public class BillMapperImpl implements BillMapper{
                 .detailProduct(bill.getDetailProduct())
                 .user(bill.getUser())
                 .date(bill.getDate())
+                .subTotal(bill.getSubTotal())
+                .products(bill.getProducts())
                 .build();
+
     }
 }

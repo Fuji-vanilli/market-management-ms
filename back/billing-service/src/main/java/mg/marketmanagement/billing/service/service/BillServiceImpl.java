@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import mg.marketmanagement.billing.service.dto.BillMapper;
 import mg.marketmanagement.billing.service.dto.BillRequest;
+import mg.marketmanagement.billing.service.dto.Product;
 import mg.marketmanagement.billing.service.dto.User;
 import mg.marketmanagement.billing.service.model.Bill;
 import mg.marketmanagement.billing.service.repository.BillRepository;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.net.UnknownServiceException;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -57,12 +59,20 @@ public class BillServiceImpl implements BillService{
             );
         }
         Bill bill= billMapper.mapToBill(request);
-        bill.setUuid(UUID.randomUUID().toString());
-        bill.setDate(LocalDateTime.now());
 
+        Map<Product, Integer> products= new HashMap<>();
         User user= new User();
+        double total= 0.0;
         try{
             user= webClient.getUser(bill.getEmailUser());
+            for(Map.Entry<String, Integer> entry: request.getProductsCode().entrySet()){
+                Product product= webClient.getProduct(entry.getKey());
+                product.setQuantity(entry.getValue());
+                product.setSubTotal(entry.getValue()*product.getPrice());
+                products.put(product, entry.getValue());
+
+                total+= product.getPrice()* entry.getValue();
+            }
         }catch (Exception e){
             return generateResponse(
                     HttpStatus.BAD_REQUEST,
@@ -72,8 +82,18 @@ public class BillServiceImpl implements BillService{
             );
         }
         bill.setUser(user);
+        bill.setProducts(products);
+        bill.setTotal(total);
+        bill.setUuid(UUID.randomUUID().toString());
+        bill.setDate(LocalDateTime.now());
         billRepository.save(bill);
 
+        try{
+            GenerateReport.generate(bill);
+        }catch (Exception e){
+            log.error("error to generate the bill report");
+            throw new RuntimeException("error to generate the bill report!");
+        }
         URI location= ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/{uuid}")
                 .buildAndExpand("api/bill/get/"+bill.getUuid())
@@ -91,17 +111,74 @@ public class BillServiceImpl implements BillService{
 
     @Override
     public Response get(String uuid) {
-        return null;
+        Bill bill= new Bill();
+        User user= new User();
+        try{
+            bill= billRepository.findByUuid(uuid).orElse(null);
+            assert bill != null;
+            user= webClient.getUser(bill.getEmailUser());
+        }catch (Exception e){
+            log.error("bill with the uuid: {} doesn't exist on the database!", uuid);
+            return generateResponse(
+                    HttpStatus.BAD_REQUEST,
+                    null,
+                    null,
+                    "bill with the uuid: "+uuid+" doesn't exist on the database!"
+            );
+        }
+        bill.setUser(user);
+        return generateResponse(
+                HttpStatus.OK,
+                null,
+                Map.of(
+                        "bill", bill
+                ),
+                "bill with the uuid: "+uuid+" getting successfully!"
+        );
     }
 
     @Override
     public Response all() {
-        return null;
+        List<Bill> bills= billRepository.findAll().stream()
+                .peek(bill -> {
+                    User user= new User();
+                    try{
+                        user= webClient.getUser(bill.getEmailUser());
+                    }catch (Exception e){
+                        log.error("user not fetch");
+                    }
+                    bill.setUser(user);
+                })
+                .toList();
+
+        return generateResponse(
+                HttpStatus.OK,
+                null,
+                Map.of(
+                        "bills", bills
+                ),
+                "all bill getting successfully!"
+        );
     }
 
     @Override
     public Response delete(String uuid) {
-        return null;
+        if(billRepository.findByUuid(uuid).isEmpty()){
+            log.error("sorry the bill with the uuid {} doesn't exist", uuid);
+            return generateResponse(
+                    HttpStatus.BAD_REQUEST,
+                    null,
+                    null,
+                    "sorry  the bill with the uuid! "+uuid+" doesn't exist on the database!"
+            );
+        }
+        billRepository.deleteByUuid(uuid);
+        return generateResponse(
+                HttpStatus.OK,
+                null,
+                null,
+                "bill deleted successfully!"
+        );
     }
     private Response generateResponse(HttpStatus status, URI location, Map<?, ?> data, String message){
         return Response.builder()

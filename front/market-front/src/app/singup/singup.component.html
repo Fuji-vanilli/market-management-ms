@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="myCard">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="myLeftCtn">
+                    <form class="myForm text-center" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                        <header>New account</header>
+                        <div class="form-group">
+                            <fa-icon [icon]="user" class="fas"></fa-icon>
+                            <input class="myInput" type="text" placeholder="username" id="username" formControlName="username">
+                        </div>
+                        <div class="form-group">
+                            <fa-icon [icon]="envelope" class="fas"></fa-icon>
+                            <input class="myInput" placeholder="email" type="text" id="email" formControlName="email">
+                        </div>
+                        <div class="form-group">
+                            <fa-icon [icon]="lock" class="fas"></fa-icon>
+                            <input class="myInput" placeholder="password" type="password" id="password" formControlName="password">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox"><small> I read and agree to Terms & Conditions</small>
+                            <div class="invalid-feedback">You must check the box</div>
+                        </label>
+                        </div>
+                        <button type="submit" class="butt" [disabled]="userForm.invalid" >CREATE ACCOUNT</button>
+                        <div class="col-md-12 mt-2">
+                            <a routerLink="/signin" class="sign-in">Sign in</a>
+                        </div>
+                        <div class="col-md-11 mt-2">
+                            <a routerLink="/signin" class="icon-log">
+                                <fa-icon [icon]="gl" style="color: #1a59e0;"></fa-icon>
+                            </a>
+                            <a routerLink="/signin" class="icon-log">
+                                <fa-icon [icon]="google" style="color: #e0421a;" ></fa-icon>
+                            </a>
+                            <a routerLink="/signin" class="icon-log">
+                                <fa-icon [icon]="apple" style="color: #3892ad;"></fa-icon>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="myRightCtn">
+                    <div class="box">
+                        <header>Fuji-Market</header>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora voluptates possimus maiores ad hic recusandae aut libero laudantium reiciendis perferendis labore unde repellat minus veritatis vero nulla, similique ipsam culpa!</p>
+                        <input type="button" class="butt_out" value="Learn More">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

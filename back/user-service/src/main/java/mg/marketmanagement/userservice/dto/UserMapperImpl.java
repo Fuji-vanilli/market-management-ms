@@ -8,8 +8,8 @@ public class UserMapperImpl implements UserMapper{
     @Override
     public User mapToUser(UserRequest request) {
         return User.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
+                .username(request.getUsername())
+                //.lastname(request.getLastname())
                 .email(request.getEmail())
                 .contact(request.getContact())
                 .photo(request.getPhoto())
@@ -22,8 +22,8 @@ public class UserMapperImpl implements UserMapper{
     public UserResponse mapToUserResponse(User user) {
         return UserResponse.builder()
                 .id(user.getId())
-                .firstname(user.getFirstname())
-                .lastname(user.getLastname())
+                .username(user.getUsername())
+                //.lastname(user.getLastname())
                 .contact(user.getContact())
                 .email(user.getEmail())
                 .photo(user.getPhoto())
