@@ -1,55 +1,93 @@
 <div class="container">
-    <div class="myCard">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="myLeftCtn">
-                    <form class="myForm text-center" [formGroup]="userForm" (ngSubmit)="onSubmit()">
-                        <header>New account</header>
-                        <div class="form-group">
-                            <fa-icon [icon]="user" class="fas"></fa-icon>
-                            <input class="myInput" type="text" placeholder="username" id="username" formControlName="username">
-                        </div>
-                        <div class="form-group">
-                            <fa-icon [icon]="envelope" class="fas"></fa-icon>
-                            <input class="myInput" placeholder="email" type="text" id="email" formControlName="email">
-                        </div>
-                        <div class="form-group">
-                            <fa-icon [icon]="lock" class="fas"></fa-icon>
-                            <input class="myInput" placeholder="password" type="password" id="password" formControlName="password">
-                        </div>
-                        <div class="form-group">
-                            <label>
-                                <input type="checkbox"><small> I read and agree to Terms & Conditions</small>
-                            <div class="invalid-feedback">You must check the box</div>
-                        </label>
-                        </div>
-                        <button type="submit" class="butt" [disabled]="userForm.invalid" >CREATE ACCOUNT</button>
-                        <div class="col-md-12 mt-2">
-                            <a routerLink="/signin" class="sign-in">Sign in</a>
-                        </div>
-                        <div class="col-md-11 mt-2">
-                            <a routerLink="/signin" class="icon-log">
-                                <fa-icon [icon]="gl" style="color: #1a59e0;"></fa-icon>
-                            </a>
-                            <a routerLink="/signin" class="icon-log">
-                                <fa-icon [icon]="google" style="color: #e0421a;" ></fa-icon>
-                            </a>
-                            <a routerLink="/signin" class="icon-log">
-                                <fa-icon [icon]="apple" style="color: #3892ad;"></fa-icon>
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="myRightCtn">
-                    <div class="box">
-                        <header>Fuji-Market</header>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora voluptates possimus maiores ad hic recusandae aut libero laudantium reiciendis perferendis labore unde repellat minus veritatis vero nulla, similique ipsam culpa!</p>
-                        <input type="button" class="butt_out" value="Learn More">
-                    </div>
-                </div>
-            </div>
+  <div class="forms-container">
+    <div class="signin-signup">
+      <form class="sign-in-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <h2 class="title">Connecter</h2>
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Username" />
         </div>
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" />
+        </div>
+        <input type="submit" value="Connecter" class="btn solid" />
+        <p class="social-text">Ou connecter avec ces plateformes</p>
+        <div class="social-media">
+          <a href="#" class="social-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </form>
+      <form class="sign-up-form" []>
+        <h2 class="title">S'enregistrer</h2>
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Username" />
+        </div>
+        <div class="input-field">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="Email" />
+        </div>
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" />
+        </div>
+        <input type="submit" class="btn" value="S'enregistrer" />
+        <p class="social-text">Ou connecter avec ces plateformes</p>
+        <div class="social-media">
+          <a href="#" class="social-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </form>
     </div>
+  </div>
+
+  <div class="panels-container">
+    <div class="panel left-panel">
+      <div class="content">
+        <h3>Vous êtes nouvel ?</h3>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
+          ex ratione. Aliquid!
+        </p>
+        <button class="btn transparent" id="sign-up-btn">
+          S'enregistrer
+        </button>
+      </div>
+      <img [src]="shopping" class="image" alt="" />
+    </div>
+    <div class="panel right-panel">
+      <div class="content">
+        <h3>Bon retour parmis nous !</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+          laboriosam ad deleniti.
+        </p>
+        <button class="btn transparent" id="sign-in-btn">
+          Connecter
+        </button>
+      </div>
+      <img [src]="desktop" class="image" alt="" /> 
+    </div>
+  </div>
 </div>

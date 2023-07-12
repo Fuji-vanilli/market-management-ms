@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService{
         if(!errors.isEmpty()){
             log.error("request not valid");
             return generateResponse(
-                    HttpStatus.NOT_FOUND,
+                    HttpStatus.BAD_REQUEST,
                     null,
                     Map.of(
                             "errors", errors
@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService{
         User user= userMapper.mapToUser(request);
         userRepository.save(user);
 
-        emailUtils.sendMail(user.getEmail(), "BIENVENUE DANS META-MARKET", "You are welcom to our plateform");
+        emailUtils.sendMail(user.getEmail(), "BIENVENUE DANS FUJI-NUMERIQUE", "You are welcom to our plateform");
 
         URI location= ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/{email}")

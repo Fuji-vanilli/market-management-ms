@@ -1,8 +1,7 @@
 package mg.marketmanagement.categoryservice.controller;
 
-import jakarta.ws.rs.Path;
 import mg.marketmanagement.categoryservice.dto.CategoryRequest;
-import mg.marketmanagement.userservice.Utils.Response;
+import mg.marketmanagement.categoryservice.utils.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

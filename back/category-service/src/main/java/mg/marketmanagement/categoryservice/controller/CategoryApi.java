@@ -3,7 +3,7 @@ package mg.marketmanagement.categoryservice.controller;
 import lombok.RequiredArgsConstructor;
 import mg.marketmanagement.categoryservice.dto.CategoryRequest;
 import mg.marketmanagement.categoryservice.service.CategoryService;
-import mg.marketmanagement.userservice.Utils.Response;
+import mg.marketmanagement.categoryservice.utils.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

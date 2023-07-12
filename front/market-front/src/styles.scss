@@ -1,7 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-    background: url('images/bg.jpg') rgba(0,0,0,0.3);
+    //background: url('images/bg.jpg') rgba(0,0,0,0.3);
     background-blend-mode: multiply;
     background-position: cover;
     background-repeat: no-repeat;
 }
+
+// The "warn" palette is optional and defaults to red if not specified.
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

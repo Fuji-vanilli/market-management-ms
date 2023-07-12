@@ -1,6 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-transparent">
-  <div class="container">
-    <a class="navbar-brand fs-4" href="#">Fuji-Market</a>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand fs-4 p-3" href="#">
+      <img [src]="logo" alt="" style="height: 2rem; height: 2rem;"></a>
     <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,7 +17,7 @@
             <a [routerLink]="['/dashboard']" class="nav-link active" aria-current="page" >Dashboard</a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" routerLink="register">Products</a>
+            <a class="nav-link" routerLink="register">Produits</a>
           </li>
           <li class="nav-item mx-2">
             <a class="nav-link" routerLink="#">Services</a>  
@@ -25,15 +26,13 @@
             <a class="nav-link" routerLink="list">Contact</a>
           </li>
         </ul>
-        <div class="d-flex justify-content-center align-items-center gap-3">  
-          <a class="text-white text-decoration-none" routerLink="/signin">Login</a>
-          <a routerLink="/singup" class="rounded-4 text-white text-decoration-none 
-              px-3 py-1 bg-pink" style="background-color: #f94ca4;">Sing Up</a>
+        <div class="d-flex justify-content-center align-items-center gap-2">  
+          <a routerLink="/signin" class="rounded-4 text-white text-decoration-none 
+              px-3 py-1 bg-pink" style="background-color: #f94ca4;">Sing In</a>
         </div>
       </div>
     </div>
-  </div>
 </nav>
-<div class="mt-5">
+<div [@routeAnimations]="getRouteAnimationData()">
   <router-outlet></router-outlet>
 </div>

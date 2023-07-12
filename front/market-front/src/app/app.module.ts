@@ -12,19 +12,22 @@ import { UserService } from './service/user.service';
 import { ListUserComponent } from './list-user/list-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SigninComponent } from './signin/signin.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 const appRoutes: Routes=[
-  {path: 'singup', component: SingupComponent},
-  {path: 'signin', component: SigninComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'list-user', component: ListUserComponent},
+  {path: 'signup', component: SingupComponent}, //data: { animation: 'LoginPage' }
+  {path: 'signin', component: SigninComponent, data: { animation: 'RegisterPage' }},
+  {path: 'dashboard', component: DashboardComponent, data: { animation: 'HomePage' }},
+  {path: 'list-user', component: ListUserComponent, data: { animation: 'HomePage' }},
   //{path: '', redirectTo: 'dashboard', component: DashboardComponent}
 ]
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
+    SigninComponent,
     SingupComponent,
     ListUserComponent,
   ],
@@ -35,7 +38,9 @@ const appRoutes: Routes=[
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule
   ],
   providers: [
     UserService

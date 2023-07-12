@@ -1,4 +1,4 @@
-package mg.marketmanagement.userservice.Utils;
+package mg.marketmanagement.categoryservice.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

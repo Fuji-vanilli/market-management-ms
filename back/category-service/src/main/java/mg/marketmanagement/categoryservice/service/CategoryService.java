@@ -1,7 +1,8 @@
 package mg.marketmanagement.categoryservice.service;
 
 import mg.marketmanagement.categoryservice.dto.CategoryRequest;
-import mg.marketmanagement.userservice.Utils.Response;
+import mg.marketmanagement.categoryservice.utils.Response;
+
 
 public interface CategoryService {
     Response add(CategoryRequest request);

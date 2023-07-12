@@ -1,1 +1,278 @@
-<p>hello world</p>
+<div class="container">
+    <aside>
+        <div class="top">
+            <div class="logo">
+                <img [src]="logo" alt="">
+                <h2>FUJI<span class="danger">TECH</span></h2>    
+            </div>
+            <div class="close" id="close-btn">
+                <span class="material-symbols-outlined">close</span>
+            </div>
+        </div>
+        <div class="sidebar">
+            <a href="#">
+                <span class="material-symbols-outlined">grid_view</span>
+                <h3>Tableau de bord</h3>
+            </a>   
+            <a href="#" class="active">
+                <span class="material-symbols-outlined">person</span>
+                <h3>Utilisateur</h3>
+            </a>
+            <a href="#">
+                <span class="material-symbols-outlined">receipt_long</span>
+                <h3>Factures</h3>
+            </a>
+            <a href="#">
+                <span class="material-symbols-outlined">insights</span>
+                <h3>Analytiques</h3>
+            </a>
+            <a href="#">
+                <span class="material-symbols-outlined">mail_outline</span>
+                <h3>Messages</h3>
+                <span class="message-count">26</span>
+            </a>
+            <a href="#">
+                <span class="material-symbols-outlined">inventory</span>
+                <h3>Produits</h3>
+            </a>
+            <a href="#">
+                <span class="material-symbols-outlined">report_gmailerrorred</span>
+                <h3>Rapports</h3>
+            </a>
+            <a href="#">
+                <span class="material-symbols-outlined">settings</span>
+                <h3>Paramètres</h3>
+            </a>
+            <a href="#">
+                <span class="material-symbols-outlined">add</span>
+                <h3>Ajouter du produit</h3>
+            </a>
+            <a href="#">
+                <span class="material-symbols-outlined">logout</span>
+                <h3>Deconnexion</h3>
+            </a> 
+            </div>
+    </aside>
+    <main>
+      <h1>Tableau de bord</h1>
+      <div class="date">
+        <input type="date">
+      </div>
+      <div class="insights">
+        <div class="sales">
+          <span class="material-symbols-outlined">analytics</span>
+          <div class="middle">
+            <div class="left">
+              <h3>Total ventes</h3>
+              <h1>$25,024</h1>
+            </div>
+            <div class="progression">
+              <svg>
+                <circle cx="38" cy="38" r="36"></circle>
+              </svg>
+              <div class="number">
+                <p>81%</p>
+              </div>
+            </div>
+          </div>
+          <small class="text-muted">Dernier 24 Heures</small>
+        </div>
+        <!----------------------- END OF SALES ------------>
+        <div class="expenses">
+          <span class="material-symbols-outlined">bar_chart</span>
+          <div class="middle">
+            <div class="left">
+              <h3>Total dépenses</h3>
+              <h1>$14,160</h1>
+            </div>
+            <div class="progression">
+              <svg>
+                <circle cx="38" cy="38" r="36"></circle>
+              </svg>
+              <div class="number">
+                <p>67%</p>
+              </div>
+            </div>
+          </div>
+          <small class="text-muted">Dernier 24 Heures</small>
+        </div>
+        <!--------------------- END OF EXPENSES ----------------->
+        <div class="income">
+          <span class="material-symbols-outlined">stacked_line_chart</span>
+          <div class="middle">
+            <div class="left">
+              <h3>Total revenues</h3>
+              <h1>$150,045</h1>
+            </div>
+            <div class="progression">
+              <svg>
+                <circle cx="38" cy="38" r="36"></circle>
+              </svg>
+              <div class="number">
+                <p>47%</p>
+              </div>
+            </div>
+          </div>
+          <small class="text-muted">Dernier 24 Heures</small>
+        </div>
+        <!------------------ END OF INCOME ------------------->
+      </div>
+      <!----------------END OF INSIGHTS ---------------------->
+      <div class="recent-order">
+        <h2>Facture recent</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Nom du produit</th>
+              <th>Code du produit</th>
+              <th>Paiement</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Clavier Shipadoo</td>
+              <td>X-CL23</td>
+              <td>Due</td>
+              <td class="warning">En cours</td>
+              <td class="primary">Détails</td>
+            </tr>
+            <tr>
+              <td>Clavier Shipadoo</td>
+              <td>X-CL23</td>
+              <td>Due</td>
+              <td class="warning">En cours</td>
+              <td class="primary">Détails</td>
+            </tr>
+            <tr>
+              <td>Clavier Shipadoo</td>
+              <td>X-CL23</td>
+              <td>Due</td>
+              <td class="warning">En cours</td>
+              <td class="primary">Détails</td>
+            </tr>
+            <tr>
+              <td>Clavier Shipadoo</td>
+              <td>X-CL23</td>
+              <td>Due</td>
+              <td class="warning">En cours</td>
+              <td class="primary">Détails</td>
+            </tr>
+            <tr>
+              <td>Clavier Shipadoo</td>
+              <td>X-CL23</td>
+              <td>Due</td>
+              <td class="warning">En cours</td>
+              <td class="primary">Détails</td>
+            </tr>
+          </tbody>
+        </table>
+        <a href="#">Afficher tout</a>
+      </div>
+    </main>
+    <!------------------- END OF MAIN ---------------------->
+    <div class="right">
+      <div class="top">
+        <button id="menu-btn">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <div class="theme-toggler">
+          <span class="material-symbols-outlined active">light_mode</span>
+          <span class="material-symbols-outlined">dark_mode</span>
+          <!--mat-slide-toggle>Dark mode</mat-slide-toggle-->
+        </div>
+        <div class="profile">
+          <div class="info">
+            <p>Hey, <b>Itachi</b></p>
+            <small class="text-muted">Admin</small>
+          </div>
+          <div class="profil-photo">
+            <img [src]="profil" alt="">
+          </div>
+        </div>
+      </div>
+      <!----------------- END TOP -------------------->
+      <div class="recent-updates">
+        <h2>Mis à jour récent</h2>
+        <div class="updates">
+          <div class="update">
+            <div class="profil-photo">
+              <img [src]="profil2" alt="">
+            </div>
+            <div class="message">
+              <p><b>Itachi Uchiwa</b> received his order of shuriken shadow ninja</p>
+              <small class="text-muted">il y a 2 minutes</small>
+            </div>
+          </div>
+          <div class="update">
+            <div class="profil-photo">
+              <img [src]="profil3" alt="">
+            </div>
+            <div class="message">
+              <p><b>Itachi Uchiwa</b> received his order of shuriken shadow ninja</p>
+              <small class="text-muted">il y a 7 minutes</small>
+            </div>
+          </div>
+          <div class="update">
+            <div class="profil-photo">
+              <img [src]="profil4" alt="">
+            </div>
+            <div class="message">
+              <p><b>Itachi Uchiwa</b> received his order of shuriken shadow ninja</p>
+              <small class="text-muted">il y a 9 minutes</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--------------- END RECENTTS UPDATES ---------->
+      <div class="sales-analytics">
+        <h2>Analyse de ventes</h2>
+        <div class="item online">
+          <div class="icon">
+            <span class="material-symbols-outlined">shopping_cart</span>
+          </div>
+          <div class="right">
+            <div class="info">
+              <h3>FACTURES EN LIGNE</h3>
+              <small class="text-muted">Dernière 24 Heures</small>
+            </div>
+            <h5 class="success">+39%</h5>
+            <h3>3869</h3>
+          </div>
+        </div>
+        <div class="item offline">
+          <div class="icon">
+            <span class="material-symbols-outlined">local_mall</span>
+          </div>
+          <div class="right">
+            <div class="info">
+              <h3>FACTURES HORS LIGNE</h3>
+              <small class="text-muted">Dernière 24 Heures</small>
+            </div>
+            <h5 class="danger">-14%</h5>
+            <h3>4157</h3>
+          </div>
+        </div>
+        <div class="item customer">
+          <div class="icon">
+            <span class="material-symbols-outlined">person</span>
+          </div>
+          <div class="right">
+            <div class="info">
+              <h3>NOUVEL UTILISATEUR</h3>
+              <small class="text-muted">Dernière 24 Heures</small>
+            </div>
+            <h5 class="success">+14%</h5>
+            <h3>145</h3>
+          </div>
+        </div>
+        <div class="item add-product">
+          <div>
+            <span class="material-symbols-outlined">add</span>
+            <h3>Ajouter du Produit</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
