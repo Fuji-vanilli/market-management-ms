@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 import static mg.marketmanagement.clientservice.utils.Root.APP_ROOT;
 
 @RestController
@@ -19,6 +21,11 @@ public class ClientApi implements ClientController{
     @Override
     public ResponseEntity<Response> add(ClientRequest request) {
         return ResponseEntity.ok(clientService.add(request));
+    }
+
+    @Override
+    public ResponseEntity<Response> addCommand(Map<String, String> command) {
+        return ResponseEntity.ok(clientService.addCommand(command));
     }
 
     @Override

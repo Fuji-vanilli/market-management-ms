@@ -24,6 +24,5 @@ public class ClientResponse {
     private String photo;
     private String phoneNumber;
     private Adresse adresse;
-    @Transient
     private List<CommandClient> commandClients= new ArrayList<>();
 }

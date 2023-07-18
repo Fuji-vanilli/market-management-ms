@@ -17,5 +17,5 @@ public class Article {
     private BigDecimal rateTVA;
     private BigDecimal unitPriceTTC;
     private String photo;
-    private String codeCategory;
+    private Category category;
 }

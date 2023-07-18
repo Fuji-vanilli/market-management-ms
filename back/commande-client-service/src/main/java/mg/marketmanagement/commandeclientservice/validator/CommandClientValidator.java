@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class ClientValidator {
+public class CommandClientValidator {
     public static List<String> validate(CommandClientRequest request){
         List<String> errors= new ArrayList<>();
 

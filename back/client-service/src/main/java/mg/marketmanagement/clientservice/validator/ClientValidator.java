@@ -22,6 +22,9 @@ public class ClientValidator {
         if(Objects.isNull(request.getAdresse())){
             errors.add("adress required!");
         }
+        if(Objects.isNull(request.getCode())){
+            errors.add("code client required!");
+        }
         return errors;
     }
 }

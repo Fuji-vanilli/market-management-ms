@@ -20,6 +20,7 @@ import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -62,7 +63,7 @@ public class LineCommandServiceImpl implements LineCommandService{
 
         URI location= ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("{code}")
-                .buildAndExpand("api/line-command/"+request.getCode())
+                .buildAndExpand("api/line-command/get/"+request.getCode())
                 .toUri();
 
         lineCommandRepository.save(lineCommand);
@@ -77,25 +78,91 @@ public class LineCommandServiceImpl implements LineCommandService{
     }
 
     @Override
-    public Response get(String code) {
+    public Response get(String code) throws JSONException {
+        Optional<LineCommand> lineCommand= lineCommandRepository.findByCode(code);
+        if(lineCommand.isEmpty()){
+            log.error("the line command with the code :"+code+"doesn't exist on the database");
+            return generateResponse(
+                    HttpStatus.BAD_REQUEST,
+                    null,
+                    null,
+                    "the line command with the code :\"+code+\"doesn't exist on the database"
+            );
+        }
 
+        Article article= webClient.getArticle(lineCommand.get().getCodeArticle());
+        lineCommand.get().setArticle(article);
 
-        return null;
+        return generateResponse(
+                HttpStatus.OK,
+                null,
+                Map.of(
+                        "line-command", lineCommandMapper.mapToLineCommandResponse(lineCommand.get())
+                ),
+                "line command getting successfully"
+        );
     }
 
     @Override
-    public Response getByList(List<String> codes) {
-        return null;
+    public List<LineCommand> getByList(List<String> codes) {
+
+        List<LineCommand> lineCommands= lineCommandRepository.findByCodeIn(codes);
+        if(lineCommands.isEmpty()){
+            log.error("the line command with the codes enter doesn't exist on the database!");
+            throw new RuntimeException("the line command with the codes enter doesn't exist on the database!");
+        }
+
+        return lineCommands.stream()
+                .peek(lineCommand -> {
+                    try {
+                        Article article= webClient.getArticle(lineCommand.getCodeArticle());
+                        lineCommand.setArticle(article);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }})
+                .toList();
     }
 
     @Override
     public Response all() {
-        return null;
+
+        return generateResponse(
+                HttpStatus.OK,
+                null,
+                Map.of(
+                        "allLineCommand", lineCommandRepository.findAll().stream()
+                                .peek(lineCommand -> {
+                                    Article article;
+                                    try {
+                                        article= webClient.getArticle(lineCommand.getCodeArticle());
+                                    } catch (JSONException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                    lineCommand.setArticle(article);
+                                })
+                ),
+                "all line command getting successfully!"
+        );
     }
 
     @Override
     public Response delete(String code) {
-        return null;
+        if(lineCommandRepository.findByCode(code).isEmpty()){
+            log.error("Sorry the line command with the code {} doesn't exist on the database ", code);
+            return generateResponse(
+                    HttpStatus.BAD_REQUEST,
+                    null,
+                    null,
+                    "Sorry the line command with the code"+code+" doesn't exist on the database "
+            );
+        }
+        lineCommandRepository.deleteByCode(code);
+        return generateResponse(
+                HttpStatus.OK,
+                null,
+                null,
+                "Line command with the code: "+code+" deleted successfully!"
+        );
     }
 
     private Response generateResponse(HttpStatus status, URI location, Map<?, ?> data, String message){

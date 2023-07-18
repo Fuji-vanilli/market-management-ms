@@ -16,7 +16,7 @@ public class ClientMapperImpl implements ClientMapper{
                 .adresse(request.getAdresse())
                 .photo(request.getPhoto())
                 .phoneNumber(request.getPhoneNumber())
-                .codeCommand(request.getCodeCommand())
+                .codeCommands(request.getCodeCommands())
                 .build();
     }
 

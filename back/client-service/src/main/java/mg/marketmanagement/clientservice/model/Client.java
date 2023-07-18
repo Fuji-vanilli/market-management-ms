@@ -27,7 +27,7 @@ public class Client {
     private String photo;
     private String phoneNumber;
     private Adresse adresse;
-    private List<String> codeCommand= new ArrayList<>();
+    private List<String> codeCommands= new ArrayList<>();
     @Transient
     private List<CommandClient> commandClients= new ArrayList<>();
 }

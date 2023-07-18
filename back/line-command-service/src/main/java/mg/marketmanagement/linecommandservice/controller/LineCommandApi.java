@@ -2,6 +2,7 @@ package mg.marketmanagement.linecommandservice.controller;
 
 import lombok.RequiredArgsConstructor;
 import mg.marketmanagement.linecommandservice.dto.LineCommandRequest;
+import mg.marketmanagement.linecommandservice.model.LineCommand;
 import mg.marketmanagement.linecommandservice.service.LineCommandService;
 import mg.marketmanagement.linecommandservice.utils.Response;
 import org.json.JSONException;
@@ -26,13 +27,13 @@ public class LineCommandApi implements LineCommandController {
     }
 
     @Override
-    public ResponseEntity<Response> get(String code) {
+    public ResponseEntity<Response> get(String code) throws JSONException {
         return ResponseEntity.ok(lineCommandService.get(code));
     }
 
     @Override
-    public ResponseEntity<Response> getByList(List<String> codes) {
-        return ResponseEntity.ok(lineCommandService.getByList(codes));
+    public List<LineCommand> getByList(List<String> codes) {
+        return lineCommandService.getByList(codes);
     }
 
     @Override

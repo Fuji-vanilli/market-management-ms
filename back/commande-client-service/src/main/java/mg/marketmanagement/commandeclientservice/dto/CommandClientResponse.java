@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @Builder
 public class CommandClientResponse {
     private String code;
+    private Instant date;
     private BigDecimal totalPrice;
     private List<LineCommand> lineCommands= new ArrayList<>();
 }

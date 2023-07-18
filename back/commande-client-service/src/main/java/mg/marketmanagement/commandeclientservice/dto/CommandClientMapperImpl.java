@@ -17,6 +17,7 @@ public class CommandClientMapperImpl implements CommandClientMapper{
     public CommandClientResponse mapToCommandClientResponse(CommandClient commandClient) {
         return CommandClientResponse.builder()
                 .code(commandClient.getCode())
+                .date(commandClient.getDate())
                 .lineCommands(commandClient.getLineCommands())
                 .totalPrice(commandClient.getTotalPrice())
                 .build();

@@ -1,6 +1,7 @@
 package mg.marketmanagement.linecommandservice.controller;
 
 import mg.marketmanagement.linecommandservice.dto.LineCommandRequest;
+import mg.marketmanagement.linecommandservice.model.LineCommand;
 import mg.marketmanagement.linecommandservice.utils.Response;
 import org.json.JSONException;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +13,9 @@ public interface LineCommandController {
     @PostMapping("add")
     ResponseEntity<Response> add(@RequestBody LineCommandRequest request) throws JSONException;
     @GetMapping("get/{code}")
-    ResponseEntity<Response> get(@PathVariable String code);
-    ResponseEntity<Response> getByList(List<String> codes);
+    ResponseEntity<Response> get(@PathVariable String code) throws JSONException;
+    @GetMapping("byIds")
+    List<LineCommand> getByList(@RequestParam("codes") List<String> codes);
     @GetMapping("all")
     ResponseEntity<Response> all();
     @DeleteMapping("delete/{code}")
