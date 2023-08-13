@@ -91,7 +91,17 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public Response all() {
-        return null;
+
+        return generateResponse(
+                HttpStatus.OK,
+                null,
+                Map.of(
+                        "categories", categoryRepository.findAll().stream()
+                                .map(categoryMapper::mapToCategoryResponse)
+                                .toList()
+                ),
+                "all category getted successfully!"
+        );
     }
 
     @Override

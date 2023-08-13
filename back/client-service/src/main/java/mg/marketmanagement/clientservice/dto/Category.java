@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Category {
     private String code;
-    private String designation;
+    private String name;
 }

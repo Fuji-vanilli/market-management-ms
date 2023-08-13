@@ -27,7 +27,7 @@ public class WebClientGetter {
 
     public List<LineCommand> getLineCommand(List<String> codes) throws JSONException {
         CompletableFuture<List<LineCommand>> dataFuture= webClient.build().get()
-                .uri("http://localhost:9470/api/line-command/byIds",
+                .uri("http://localhost:9470/api/line-command/byCodes",
                         uriBuilder -> uriBuilder.queryParam("codes", codes).build())
                 .retrieve()
                 .bodyToFlux(LineCommand.class)

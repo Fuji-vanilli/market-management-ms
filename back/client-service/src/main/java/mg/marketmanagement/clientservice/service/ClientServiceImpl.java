@@ -151,6 +151,22 @@ public class ClientServiceImpl implements ClientService{
     }
 
     @Override
+    public List<Client> getClients(List<String> codes) {
+        List<Client> clients= clientRepository.findByCodeIn(codes);
+
+        if(clients.isEmpty()){
+            log.error("sorry no client with the list of codes, try again!!!!");
+        }
+
+        return clients.stream()
+                .peek(client -> {
+                    List<CommandClient> commandClients= webClient.getCommandClient(client.getCodeCommands());
+                    client.setCommandClients(commandClients);
+                })
+                .toList();
+    }
+
+    @Override
     public Response getWithCommand(String code) {
 
         return null;

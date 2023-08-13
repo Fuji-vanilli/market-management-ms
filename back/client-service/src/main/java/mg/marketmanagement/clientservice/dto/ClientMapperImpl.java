@@ -32,6 +32,7 @@ public class ClientMapperImpl implements ClientMapper{
                 .adresse(client.getAdresse())
                 .photo(client.getPhoto())
                 .phoneNumber(client.getPhoneNumber())
+                .codeCommands(client.getCodeCommands())
                 .commandClients(client.getCommandClients())
                 .build();
     }

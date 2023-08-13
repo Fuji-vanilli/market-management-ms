@@ -2,12 +2,14 @@ package mg.marketmanagement.clientservice.controller;
 
 import lombok.RequiredArgsConstructor;
 import mg.marketmanagement.clientservice.dto.ClientRequest;
+import mg.marketmanagement.clientservice.model.Client;
 import mg.marketmanagement.clientservice.service.ClientService;
 import mg.marketmanagement.clientservice.utils.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 import static mg.marketmanagement.clientservice.utils.Root.APP_ROOT;
@@ -31,6 +33,11 @@ public class ClientApi implements ClientController{
     @Override
     public ResponseEntity<Response> get(String code) {
         return ResponseEntity.ok(clientService.get(code));
+    }
+
+    @Override
+    public List<Client> getClients(List<String> codes) {
+        return clientService.getClients(codes);
     }
 
     @Override

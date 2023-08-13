@@ -1,10 +1,12 @@
 package mg.marketmanagement.clientservice.controller;
 
 import mg.marketmanagement.clientservice.dto.ClientRequest;
+import mg.marketmanagement.clientservice.model.Client;
 import mg.marketmanagement.clientservice.utils.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 public interface ClientController {
@@ -14,6 +16,8 @@ public interface ClientController {
     ResponseEntity<Response> addCommand(@RequestBody Map<String, String> command);
     @GetMapping("get/{code}")
     ResponseEntity<Response> get(@PathVariable String code);
+    @GetMapping("byCodes")
+    List<Client> getClients(@RequestParam("codes") List<String> codes);
     @GetMapping("getWithCommand/{code}")
     ResponseEntity<Response> getWithCommand(@PathVariable String code);
     @GetMapping("all")

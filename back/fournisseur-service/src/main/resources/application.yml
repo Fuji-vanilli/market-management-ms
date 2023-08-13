@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: fournisseur-service
+
+  config:
+    import: optional:configserver:http://localhost:9100

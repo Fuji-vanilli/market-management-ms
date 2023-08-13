@@ -17,5 +17,6 @@ public class CommandClientResponse {
     private String code;
     private Instant date;
     private BigDecimal totalPrice;
+    private List<String> codeLineCommands= new ArrayList<>();
     private List<LineCommand> lineCommands= new ArrayList<>();
 }

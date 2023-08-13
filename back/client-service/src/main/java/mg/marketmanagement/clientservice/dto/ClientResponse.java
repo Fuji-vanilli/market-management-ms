@@ -24,5 +24,6 @@ public class ClientResponse {
     private String photo;
     private String phoneNumber;
     private Adresse adresse;
+    private List<String> codeCommands= new ArrayList<>();
     private List<CommandClient> commandClients= new ArrayList<>();
 }

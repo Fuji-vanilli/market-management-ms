@@ -20,6 +20,7 @@ public class CommandClientMapperImpl implements CommandClientMapper{
                 .date(commandClient.getDate())
                 .lineCommands(commandClient.getLineCommands())
                 .totalPrice(commandClient.getTotalPrice())
+                .codeLineCommands(commandClient.getCodeLineCommands())
                 .build();
     }
 }

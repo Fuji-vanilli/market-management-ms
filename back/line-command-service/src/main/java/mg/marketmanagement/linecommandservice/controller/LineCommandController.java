@@ -14,7 +14,7 @@ public interface LineCommandController {
     ResponseEntity<Response> add(@RequestBody LineCommandRequest request) throws JSONException;
     @GetMapping("get/{code}")
     ResponseEntity<Response> get(@PathVariable String code) throws JSONException;
-    @GetMapping("byIds")
+    @GetMapping("byCodes")
     List<LineCommand> getByList(@RequestParam("codes") List<String> codes);
     @GetMapping("all")
     ResponseEntity<Response> all();
