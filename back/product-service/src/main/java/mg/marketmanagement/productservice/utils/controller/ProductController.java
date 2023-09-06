@@ -1,4 +1,4 @@
-package mg.marketmanagement.productservice.controller;
+package mg.marketmanagement.productservice.utils.controller;
 
 import mg.marketmanagement.productservice.dto.ProductRequest;
 import mg.marketmanagement.userservice.Utils.Response;

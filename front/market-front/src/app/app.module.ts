@@ -21,7 +21,7 @@ const appRoutes: Routes=[
   {path: 'signin', component: SigninComponent, data: { animation: 'RegisterPage' }},
   {path: 'dashboard', component: DashboardComponent, data: { animation: 'HomePage' }},
   {path: 'list-user', component: ListUserComponent, data: { animation: 'HomePage' }},
-  //{path: '', redirectTo: 'dashboard', component: DashboardComponent}
+  {path: '', redirectTo: 'dashboard', component: DashboardComponent}
 ]
 @NgModule({
   declarations: [

@@ -1,4 +1,4 @@
-package mg.marketmanagement.productservice.controller;
+package mg.marketmanagement.productservice.utils.controller;
 
 import lombok.RequiredArgsConstructor;
 import mg.marketmanagement.productservice.dto.ProductRequest;

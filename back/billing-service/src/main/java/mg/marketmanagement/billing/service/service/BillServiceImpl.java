@@ -61,10 +61,15 @@ public class BillServiceImpl implements BillService{
         Bill bill= billMapper.mapToBill(request);
 
         Map<Product, Integer> products= new HashMap<>();
-        User user= new User();
+        User user=  User.builder()
+                .firstname("rakoto")
+                .lastname("nirina")
+                .contact("252585452")
+                .build();
+
         double total= 0.0;
         try{
-            user= webClient.getUser(bill.getEmailUser());
+            //user= webClient.getUser(bill.getEmailUser());
             for(Map.Entry<String, Integer> entry: request.getProductsCode().entrySet()){
                 Product product= webClient.getProduct(entry.getKey());
                 product.setQuantity(entry.getValue());

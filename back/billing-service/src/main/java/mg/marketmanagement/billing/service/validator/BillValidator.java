@@ -12,10 +12,10 @@ public class BillValidator {
 
         if(Objects.isNull(request.getDetailProduct())){
             errors.add("detail of product required!!!");
-        }
-        if(Objects.isNull(request.getEmailUser())){
+        }/*
+        if(!Objects.isNull(request.getEmailUser())){
             errors.add("email of user required required!!!");
-        }
+        }*/
         if(Objects.isNull(request.getMethodPayement())){
             errors.add("method of paiement required!!!");
         }
